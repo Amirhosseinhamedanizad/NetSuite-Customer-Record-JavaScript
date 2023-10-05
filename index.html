@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSuite Client-Side Script</title>
+</head>
+<body>
+    <!-- Include your JavaScript file -->
+    <script>
+        // JavaScript code for applying a discount to a Sales Order
+        function applyDiscountToSalesOrder() {
+            // Get the value of the "Discount Code" custom field
+            var discountCode = prompt('Enter Discount Code:');
+            
+            // Define valid discount codes and corresponding discount percentages
+            var validDiscounts = {
+                'DISCOUNT10': 0.10, // 10% discount
+                'SALE20': 0.20,     // 20% discount
+            };
+
+            // Check if the discount code is valid
+            if (discountCode && validDiscounts.hasOwnProperty(discountCode)) {
+                // Calculate the discount amount
+                var totalAmount = parseFloat(prompt('Enter Total Amount:'));
+                var discountPercentage = validDiscounts[discountCode];
+                var discountAmount = totalAmount * discountPercentage;
+
+                // Display the discount amount to the user
+                alert('Discount of ' + (discountPercentage * 100) + '% applied. Discount Amount: $' + discountAmount.toFixed(2));
+            } else {
+                // Display an error message for an invalid discount code
+                alert('Invalid Discount Code');
+            }
+        }
+
+        // Call the function to start the discount application process
+        applyDiscountToSalesOrder();
+    </script>
+</body>
+</html>
